@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://5hj2j0x6nvak"]
+
+[ext_resource type="PackedScene" uid="uid://3jm5r716b8j3" path="res://_scenes/characters/tekken_esque.tscn" id="1_rohdu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1kgvb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rvlqc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2q7xd"]
+
+[node name="stage" type="Node3D"]
+
+[node name="floor" type="Node3D" parent="."]
+
+[node name="floor" type="StaticBody3D" parent="floor"]
+transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 25, 0, -1, 0)
+physics_material_override = SubResource("PhysicsMaterial_1kgvb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/floor"]
+shape = SubResource("BoxShape3D_rvlqc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor/floor"]
+mesh = SubResource("BoxMesh_2q7xd")
+
+[node name="object_marker" type="CSGBox3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.353553, -0.353553, 0.866025, 0.612372, 0.612372, 0.5, -0.707107, 0.707107, -3.78552e-08, 0, 0, 0)
+light_energy = 1.5
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 12.5, 20)
+
+[node name="Node" type="Node" parent="."]
+
+[node name="CharacterBody3D" parent="Node" instance=ExtResource("1_rohdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 7)
+
+[node name="CharacterBody3D2" parent="Node" instance=ExtResource("1_rohdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 7)
+
+[node name="CharacterBody3D3" parent="Node" instance=ExtResource("1_rohdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.869844, -7)
+
+[node name="CharacterBody3D4" parent="Node" instance=ExtResource("1_rohdu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.838179, -7)

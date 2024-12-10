@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://3jm5r716b8j3"]
+
+[ext_resource type="Script" path="res://scripts/player_moving_v0_tekken.gd" id="1_8n42l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jvdml"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6qrwa"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_8n42l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jvdml")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_6qrwa")
+skeleton = NodePath("../CollisionShape3D")
